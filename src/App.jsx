@@ -3,9 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import {useTaskStore} from './stores/useTestingStore.ts'
-import TestingComponent from './components/TestingComponent.jsx'
-import TaskDashboard from '@/components/TaskDashboard.tsx'
+import {useTaskStore} from './stores/useTestingStore'
+import TestingComponent from './components/TestingComponent'
+import TaskDashboard from '@/components/TaskDashboard'
 //console.log('before:', useTaskStore.getState());
 
 //console.log('before:', useTaskStore.getState().count);

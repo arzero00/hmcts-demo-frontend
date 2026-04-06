@@ -2,23 +2,23 @@ import { useForm } from 'react-hook-form';
 import { useTaskDashboardStore } from '@/stores/useTaskDashboardStore';
 import { useCreateTask1 } from '@/hooks/useTasks';
 
-type TaskFormData = {
-  title: string;
-  description: string;
-  status: string;
-  dueDate: string;
-};
+// type TaskFormData = {
+//   title: string;
+//   description: string;
+//   status: string;
+//   dueDate: string;
+// };
 
 export function AddTaskModal() {
   const { selectedCaseWorkerId, isModalOpen, toggleModal } = useTaskDashboardStore();
   const createTaskMutation = useCreateTask1(selectedCaseWorkerId);
 
   // Initialize React Hook Form
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<TaskFormData>({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: { status: 'PENDING' }
   });
 
-  const onSubmit = (data: TaskFormData) => {
+  const onSubmit = (data) => {
     createTaskMutation.mutate(data, {
       onSuccess: () => {
         reset(); // Clear form
@@ -73,10 +73,10 @@ export function AddTaskModal() {
 }
 
 // Simple styles for the demonstration
-const modalOverlayStyle: React.CSSProperties = {
+const modalOverlayStyle= {
   position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
   backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'
 };
-const modalContentStyle: React.CSSProperties = {
+const modalContentStyle = {
   backgroundColor: 'white', padding: '30px', borderRadius: '8px', width: '400px'
 };
