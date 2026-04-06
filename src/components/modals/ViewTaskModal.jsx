@@ -21,6 +21,13 @@ export function ViewTaskModal({ task, isOpen, onClose }) {
       </div>
     );
 
+    const STATUS_LABELS = {
+      TODO: 'To-Do',
+      IN_PROGRESS: 'In Progress',
+      COMPLETED: 'Completed',
+      // Add others if they exist in your TaskStatus enum
+    };
+
   return (
     <div style={overlayStyle}>
       <div style={modalStyle}>
@@ -43,7 +50,7 @@ export function ViewTaskModal({ task, isOpen, onClose }) {
             minHeight="50px"
           />
           <DataRow label="Due Date" value={formatTaskDate(task.dueDate) || 'No date set'} />
-          <DataRow label="Status" value={task.status} />
+          <DataRow label="Status" value={STATUS_LABELS[task.status] || task.status || 'Unknown'}/>
         </div>
 
         <footer style={{ textAlign: 'right', borderTop: '1px solid #eee', paddingTop: '15px' }}>

@@ -1,73 +1,73 @@
-# React + TypeScript + Vite
+# HMCTS Frontend Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the HMCTS case management system
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# About
+The system allows caseworkers to efficiently create, track, and manage their tasks.
 
-## React Compiler
+# Features
+- Create tasks with title, description, status, and due date
+- View all tasks in a clean, accessible interface
+- Edit existing tasks with form validation
+- Delete tasks with confirmation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+# Technology Stack
+- React: Client-side UI components
+- SCSS: Styling
+- Jest/Testing Library: For component testing
+- Zustand: Local state management
+- React Query: Server state management
+- React Hook Form: Input validation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Getting Started
+## Prerequisites
+- Node.js 24+ with npm
+- Application is running at http://localhost:5173
+- Application fire requests to backend ar http://localhost:4000, please refer to https://github.com/arzero00/hmcts-dev-test-backend to setup the backend server
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Installation and Setup
+```Bash
+# Clone the repository
+git clone https://github.com/arzero00/hmcts-demo-frontend.git
+cd hmcts-demo-frontend
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+Application is running at http://localhost:5173
+
+This project uses vite so when you make changes to components within react the page will automatically be updated to reflect this using HMR.
+
+
+# Testing
+
+To run tests.
+```Bash
+# Run all unit tests
+npm test
+
+# Run with coverage
+npm test:coverage
+
+# Watch mode for development
+npm test --watch
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tests cover:
+- Page loading and navigation
+- Form submission workflows
+- Case creation, editing, and deletion
+- Error handling scenarios
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Building the docker image
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+From the root of the project (Where the Docker file is), run `docker build . -t hmcts-demo-frontend:latest`
+
+This then means a docker image will be build locally and ready to use. Please go to https://github.com/arzero00/hmcts-developer-challenge and follow the README.md there to run the full project end to end.
+

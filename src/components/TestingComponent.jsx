@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import { useTask, useDeleteTask, useDeleteTask1,useTasks1 } from '@/hooks/useTasks.ts';
-import {useTaskStore} from '@/stores/useTestingStore.ts'
+import { useTask, useDeleteTask, useDeleteTask1,useTasks1 } from '@/hooks/useTasks';
+import {useTaskStore} from '@/stores/useTestingStore'
 
 function TestingComponent(){
     const { selectedUserId } = useTaskStore(); // From Zustand
@@ -51,7 +51,7 @@ function TestingComponent(){
                 }>
                 This is {title} {count}
             </h1>
-            <h1>Is Loading:  {tasks[1].title}</h1>
+            <h1>Is Loading:  {tasks.title}</h1>
         </div>
     )
 }

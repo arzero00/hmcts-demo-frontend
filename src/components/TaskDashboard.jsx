@@ -1,14 +1,13 @@
-import { useTaskDashboardStore } from '@/stores/useTaskDashboardStore.ts';
-import { useTasks, useDeleteTask } from '@/hooks/useTasks.ts';
-import { useDeleteTask1,useTasks1, useUpdateStatus1 } from '@/hooks/useTasks.ts';
-import { useCaseWorkers1 } from '@/hooks/useCaseWorkers.ts';
+import { useTaskDashboardStore } from '@/stores/useTaskDashboardStore';
+import { useTasks, useDeleteTask } from '@/hooks/useTasks';
+import { useDeleteTask1,useTasks1, useUpdateStatus1 } from '@/hooks/useTasks';
+import { useCaseWorkers1 } from '@/hooks/useCaseWorkers';
 import {useState, useEffect, useMemo} from 'react'
-import { AddTaskModal } from '@/components/AddTaskModal';
-//import {ConfirmModal} from '@/components/ConfirmModal';
-import {ViewTaskModal} from '@/components/ViewTaskModal';
+import { AddTaskModal } from '@/components/modals/AddTaskModal';
+import {ViewTaskModal} from '@/components/modals/ViewTaskModal';
 import {formatTaskDate} from '@/utils/date'
-import {EditTaskModal} from '@/components/EditTaskModal'
-import {DeleteConfirmModal} from '@/components/DeleteConfirmModal'
+import {EditTaskModal} from '@/components/modals/EditTaskModal'
+import {DeleteConfirmModal} from '@/components/modals/DeleteConfirmModal'
 
 function TaskDashboard() {
   const { selectedCaseWorkerId, setCaseWorkerId, toggleModal } = useTaskDashboardStore();
@@ -69,17 +68,7 @@ const handleUpdateSave = (formData) => {
 // State to manage the Delete Confirmation Modal
     const [taskToDelete, setTaskToDelete] = useState(null); // Stores { id, title }
 
-//     const openDeleteConfirm = (task) => {
-//       setTaskToDelete(task);
-//     };
-//
-//     const handleConfirmDelete = () => {
-//       if (taskToDelete) {
-//         deleteMutation.mutate(taskToDelete.id, {
-//           onSuccess: () => setTaskToDelete(null) // Close modal on success
-//         });
-//       }
-//     };
+
 
 const handleFinalDelete = () => {
     if (taskToDelete) {
@@ -94,7 +83,7 @@ const handleFinalDelete = () => {
 // Helper to get Status Labels/Colors
 const getStatusBadge = (status) => {
   const styles = {
-    'TODO': { label: '📝 Todo', color: '#6c757d' },
+    'TODO': { label: '📝 To-Do', color: '#6c757d' },
     'IN_PROGRESS': { label: '⏳ In Progress', color: '#007bff' },
     'COMPLETED': { label: '✅ Completed', color: '#28a745' }
   };
@@ -156,7 +145,7 @@ const getStatusBadge = (status) => {
                           style={{ marginLeft: '10px', fontSize: '12px' }}
                         >
                           <option value="ALL">All</option>
-                          <option value="TODO">Todo</option>
+                          <option value="TODO">To-Do</option>
                           <option value="IN_PROGRESS">In Progress</option>
                           <option value="COMPLETED">Completed</option>
                         </select>

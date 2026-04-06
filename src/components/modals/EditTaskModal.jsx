@@ -57,7 +57,7 @@ export function EditTaskModal({ task, isOpen, onClose, onSave, isLoading }) {
 
           <FormRow label="Status">
             <select {...register("status")} style={selectStyle}>
-              <option value="TODO">Todo</option>
+              <option value="TODO">To-Do</option>
               <option value="IN_PROGRESS">In Progress</option>
               <option value="COMPLETED">Completed</option>
             </select>
